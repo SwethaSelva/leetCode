@@ -23,6 +23,11 @@ function arrToBT(arr) {
   return root;
 }
 
+/**
+ * https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/
+ * @param {TreeNode} root
+ * @return {number}
+ */
 var pseudoPalindromicPaths  = function(root) {
   
 };
