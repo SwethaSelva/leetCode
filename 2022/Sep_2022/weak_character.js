@@ -8,7 +8,6 @@ var numberOfWeakCharacters = function (properties) {
   let count = 0;
   let max = 0;
   properties = properties.sort((a,b) => (a[0] === b[0])? a[1] - b[1]: b[0] - a[0]);
-  console.log({ properties })
   for (let i = 0; i < properties.length; i++) {
     if (properties[i][1] < max) count++;
     max = Math.max(properties[i][1], max);
