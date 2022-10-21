@@ -23,18 +23,18 @@ var intToRoman = function(num) {
   let numsDir =  [1,  5,  10, 50, 100,500,1000];
   let romanDir = ['I','V','X','L','C','D','M'];
   let result = '';
-  return backTracking(num);
+  return backTracking(num, numsDir.length - 1);
 
-  function backTracking(num) { // 1999 - M110011011
+  function backTracking(num, startIdx) {
     if (num < 1) return result;
-    for (let i = numsDir.length - 1; i >= 0; i--) {
+    for (let i = startIdx; i >= 0; i--) {
       if (numsDir[i] > num) continue;
       
       let tensIdx = i % 2? i-1: i;
       let digit = Math.floor(num / numsDir[tensIdx]);
       if (digit === 9) {
         result += romanDir[i-1] + romanDir[i+1];
-        return backTracking(num % numsDir[tensIdx]);
+        return backTracking(num % numsDir[tensIdx], tensIdx);
       }
 
       if (digit === 4) result += romanDir[i] + romanDir[i+1];
@@ -42,7 +42,7 @@ var intToRoman = function(num) {
         for (let j = 0; j < Math.floor(num / numsDir[i]); j++)
           result += romanDir[i];
       }
-      return backTracking(num % numsDir[i]);
+      return backTracking(num % numsDir[i], i);
     }
     return result;
   }
